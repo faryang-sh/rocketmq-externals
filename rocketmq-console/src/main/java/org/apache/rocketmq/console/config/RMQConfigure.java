@@ -100,7 +100,11 @@ public class RMQConfigure {
     }
 
     public void setMsgTrackTopicName(String msgTrackTopicName) {
-        this.msgTrackTopicName = msgTrackTopicName;
+        if (StringUtils.isBlank(msgTrackTopicName)){
+            this.msgTrackTopicName = MixAll.RMQ_SYS_TRACE_TOPIC;
+        }else {
+            this.msgTrackTopicName = msgTrackTopicName;
+        }
     }
 
     public boolean isLoginRequired() {
